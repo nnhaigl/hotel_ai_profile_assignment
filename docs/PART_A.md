@@ -4,7 +4,7 @@
 
 Use Node.js 24.12.0 or newer; this checkout was run with Node.js 24.12.0 and npm 11.6.2. The version in `.nvmrc` is the tested runtime.
 
-The Git repository intentionally excludes the supplied `data/` folder, the original assignment `README.md` and generated `out/`. After cloning, restore the assignment files locally. Fixture-based tests require the original two JSON files at their default `data/` paths; the CLI can instead receive the supplied inputs from another location using the flags below. These files remain ignored by Git.
+The Git repository tracks the project `README.md` and intentionally excludes the supplied `data/` folder, the preserved assignment `ASSIGNMENT.md` and generated `out/`. After cloning, restore the supplied data locally. Fixture-based tests require the original two JSON files at their default `data/` paths; the CLI can instead receive the supplied inputs from another location using the flags below. Restore the assignment snapshot before using the provenance reviewer. These local inputs and generated outputs remain ignored by Git.
 
 From the repository root:
 
@@ -128,7 +128,9 @@ On 2026-10-07, `npm ci --offline --ignore-scripts --no-audit --no-fund`, `npm ru
 
 The implementation agent applied `prompts/review-hotel-profile.md` to both source files, all nine Hotel/provenance pairs, all 133 factual output values and the Ops report. Source-grounding result: `PASS`, with the human decisions listed in the report still open. No unsupported factual values were found in that scope. This was not an independently delegated review or Ops publication approval; no external website or schema-validator execution was performed.
 
-Known scope limits: fixture-focused integer-price parsing, no general international telephone validator, no live website checks, no external JSON-LD processor/schema-validator execution, and no human-approved business policies. Future formats are withheld with explanations rather than guessed. Part C is recorded in [AI_LOG.md](../AI_LOG.md). The Part D week-one executive handoff is in [UPDATE.md](../UPDATE.md).
+Known scope limits: fixture-focused integer-price parsing, no general international telephone validator, no live website checks, no external JSON-LD processor/schema-validator execution, and no human-approved business policies. Unsupported values should be withheld with explanations rather than guessed; known boundary defects are noted below. Part C is recorded in [AI_LOG.md](../AI_LOG.md). The Part D week-one executive handoff is in [UPDATE.md](../UPDATE.md).
+
+Subsequent read-only review identified two defects with custom inputs that the current 26 tests do not cover. Amenity splitting at every comma/semicolon can detach parenthetical qualifiers or retain text from inside an unsafe block: `Parking (paid, reservation required)` becomes two entries, and `<script>Pool, Spa, Gym</script>` can leave `Spa` as a public amenity. Also, an empty array is treated as missing for all fields; an official scalar value such as `checkin: []` can therefore be automatically filled from OTA instead of being flagged invalid and withheld. These findings do not change the checked default-fixture outputs. They remain open engineering fixes; the declared normalization and gap-fill policies should not be weakened to accommodate them.
 
 One actual implementation correction worth retaining for Part C: the first strict type-check caught `url` missing from the shared field union before any output was generated. The field was added, and coverage tests now check the generated factual paths and source evidence.
 

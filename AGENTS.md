@@ -4,12 +4,14 @@
 
 Build an offline hotel-data CLI for `hotel_ai_profile_assignment`: ingest the two supplied sources, normalize and merge records, and export Schema.org Hotel JSON-LD, per-field provenance and an Ops review report. Use TypeScript with Node.js only. No paid services or runtime network calls.
 
-Use the locally supplied original assignment in README.md for requirements and `docs/DESIGN_NOTES.md` for confirmed decisions and unresolved proposals. The user excluded README.md and `data/` from Git; restore the supplied files locally before fixture-based runs and tests. This file contains working instructions; keep brainstorming and conversation history in the design notes.
+Use README.md for project setup, usage and test coverage, the preserved assignment in `ASSIGNMENT.md` for requirements, and `docs/DESIGN_NOTES.md` for confirmed decisions and unresolved proposals. The project README is tracked; the assignment snapshot and `data/` remain excluded from Git. Restore the supplied data locally before fixture-based runs and tests and the assignment snapshot before provenance review. This file contains working instructions; keep brainstorming and conversation history in the design notes.
 
 ## Repository map and current state
 
 - `data/hotels_raw.json`: official hotel records; preserve the supplied fixture.
 - `data/hotels_ota.json`: OTA records; preserve the supplied fixture.
+- `README.md`: project overview, run commands, output, test cases and limitations.
+- `ASSIGNMENT.md`: preserved assignment README; local and ignored.
 - `src/`: TypeScript ingestion, normalization, merge, export, reporting and safe output ownership.
 - `tests/profile.test.ts`: normalization, source tracing, merge, CLI and rerun/cleanup tests using Node's test runner.
 - `out/`: generated Hotel/provenance pairs, `report.md`, `review.json` and generator ownership manifest.
@@ -55,7 +57,7 @@ Node.js executes erasable TypeScript directly; no build step is required. Runtim
 
 - For brainstorming requests, discuss and record choices before implementing them. For explicit implementation requests, complete the requested work and resolve routine technical details without repeated confirmation.
 - Keep changes scoped and reviewable. Preserve commit history; do not reset or rewrite the user's work.
-- Commit, push or publish only when explicitly requested. The user authorized committing and pushing code/documentation on 2026-10-07, excluding root `data/` and `README.md`; keep those files local and ignored. Preserve the existing ignore rule for generated `out/`.
+- Commit, push or publish only when explicitly requested. On 2026-10-07 the user authorized committing and pushing the rewritten project README with the documentation changes. This supersedes the earlier exclusion of the assignment README, whose contents are now preserved in `ASSIGNMENT.md`. Keep root `data/` and `ASSIGNMENT.md` local and ignored, and preserve the existing ignore rule for generated `out/`.
 - Update AGENTS.md when commands or durable conventions change; keep detailed rationale in linked documentation. Use nested instruction files only if a directory actually needs different rules.
 
 ## Verification and definition of done

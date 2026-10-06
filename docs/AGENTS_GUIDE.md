@@ -52,4 +52,4 @@ In an installed Codex CLI, start a fresh session from the repository root and as
 codex --ask-for-approval never "List the instruction files you loaded and summarize the repository rules. Do not modify files or run the application."
 ```
 
-Check that the root file is listed, TypeScript/Node.js, source-grounding rules and the repository upload hold are recognized, the "Hotel provenance reviewer" template is identified, and the actual pipeline/test/type-check commands are understood. This interactive Codex loading check was not executed during this revision; local document consistency checks were performed instead.
+Check that the root file is listed, TypeScript/Node.js, source-grounding rules and repository upload authorization and exclusions are recognized, the "Hotel provenance reviewer" template is identified, and the actual pipeline/test/type-check commands are understood. This interactive Codex loading check was not executed during this revision; local document consistency checks were performed instead.

@@ -4,7 +4,8 @@ This document records confirmed choices, proposals and open questions. It is not
 
 ## Evidence and document ownership
 
-- README.md contains the original assignment.
+- README.md is the project guide for setup, CLI usage, outputs and tests.
+- ASSIGNMENT.md preserves the previous assignment README locally and remains ignored by Git.
 - The supplied files in `data/` are the only evidence for hotel facts.
 - AGENTS.md contains durable working instructions.
 - This document records design discussion and decision status.
@@ -16,12 +17,13 @@ This document records confirmed choices, proposals and open questions. It is not
 | --- | --- |
 | Resource language | English for authored files; preserve original factual evidence in its original language. |
 | Stack | TypeScript with Node.js only. This narrows the original assignment's language options. |
+| Project README | On 2026-10-07 the user requested a normal project README covering purpose, startup and test cases, then requested committing and pushing the changes. The project README is now tracked; the previous assignment README is preserved in local, ignored `ASSIGNMENT.md`. |
 | Reusable agent asset | "Hotel provenance reviewer" prompt template in `prompts/review-hotel-profile.md`, selected by the user on 2026-10-07 for Part B.2. |
 | Planning | Establish a shared source of truth and discuss design before further implementation. |
 | First brainstorming topic | AI use and organization of the working process. |
 | Repository name | hotel_ai_profile_assignment. |
 | Repository visibility | Public, as explicitly requested by the user. The assignment itself accepts a private repo or ZIP. |
-| Upload | User authorized committing and pushing code/documentation on 2026-10-07, excluding root `data/` and `README.md`. Keep excluded files locally; generated `out/` remains ignored. This supersedes the earlier empty-repository-only request. |
+| Upload | User authorized committing and pushing code/documentation on 2026-10-07. The subsequent request to push the project README supersedes its earlier exclusion when it contained the assignment. Keep root `data/` and the preserved `ASSIGNMENT.md` local and ignored; generated `out/` remains ignored. This supersedes the earlier empty-repository-only request. |
 
 An earlier GitHub repository-creation attempt was rejected and pushed no content. The current checkout has an `origin` remote configured; the subsequent user instruction authorizes a normal push within the exclusions above. This is delivery history, not a coding convention.
 
@@ -33,7 +35,7 @@ Part A is implemented in TypeScript/Node.js, as requested by the user on 2026-10
 
 Asset: [Hotel provenance reviewer](../prompts/review-hotel-profile.md). Invocation instructions are in root `AGENTS.md`; the prompt itself contains only review instructions.
 
-[README.md, Part B.2](../README.md) requires a reusable agent asset and a 3-5-line explanation of the choice, but does not prescribe a file for that explanation. The rationale is kept here with the other design decisions.
+Part B.2 of the local `ASSIGNMENT.md` requires a reusable agent asset and a 3-5-line explanation of the choice, but does not prescribe a file for that explanation. The rationale is kept here with the other design decisions.
 
 ### Why I chose it
 
