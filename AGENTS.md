@@ -10,17 +10,16 @@ Use the original assignment in README.md for requirements and `docs/DESIGN_NOTES
 
 - `data/hotels_raw.json`: official hotel records; preserve the supplied fixture.
 - `data/hotels_ota.json`: OTA records; preserve the supplied fixture.
-- `out/`: generated hotel profiles, provenance and `report.md` from the initial draft.
-- `hotel_profile.py` and `tests/test_profile.py`: earlier Python draft, retained for review; not the selected implementation.
-- `assets/REVIEW_PROMPT.md`: reusable source-grounding review checklist.
+- `out/`: planned generated hotel profiles, provenance and `report.md`; not created yet.
+- `prompts/review-hotel-profile.md`: reusable "Hotel provenance reviewer" prompt template for Part B.2.
 - `docs/DESIGN_NOTES.md`: design discussion and decision status.
-- `AI_LOG.md` and `UPDATE.md`: required AI log and executive handoff.
+- `AI_LOG.md` and `UPDATE.md`: required AI log and executive handoff; not created yet.
 
-The TypeScript migration has not been performed. Do not add Python application code or tests.
+No application implementation is present in this checkout. Use TypeScript/Node.js for implementation; do not add Python application code or tests.
 
 ## Setup and verification commands
 
-No `package.json`, TypeScript configuration or verified Node.js run/build/test commands exist yet. Do not invent commands or claim the earlier Python checks validate a TypeScript implementation.
+No `package.json`, TypeScript configuration or verified Node.js run/build/test commands exist yet. Do not invent commands or claim successful application checks before tooling exists.
 
 When implementing the Node.js tooling, document the required Node.js version, package manager and actual setup/run/type-check/test commands here. Verify those commands before marking them usable. The finished CLI must run with one command and work offline.
 
@@ -52,9 +51,19 @@ When implementing the Node.js tooling, document the required Node.js version, pa
 
 - For implementation changes, run the relevant verified checks, including TypeScript type checking and tests once tooling exists. For documentation-only changes, check accuracy, links and consistency; application tests are not required.
 - Cover critical behavior: source tracing for every published field, visible conflicts, gap filling without invention, exclusion decisions, unsafe input, byte-stable reruns and generator-owned cleanup.
-- Inspect representative outputs against their source records. Use `assets/REVIEW_PROMPT.md` during data-pipeline review.
+- Inspect representative outputs against their source records. Use the "Hotel provenance reviewer" template in `prompts/review-hotel-profile.md` during data-pipeline review and before preparing the submission.
 - Explain what changed, the checks actually run and remaining limitations. Do not claim human approval, independent review or validation that did not occur.
 - When preparing the submission, check all assignment deliverables and length limits. Record actual AI mistakes and corrections honestly; observe the assignment's time cap.
+
+## Reusable review asset
+
+Use `prompts/review-hotel-profile.md` with any AI coding tool that can read the repository files. It defines the review inputs, evidence checks and findings format. The four-line explanation of the choice for Part B.2 is in [the design notes](docs/DESIGN_NOTES.md#reusable-agent-asset-part-b2).
+
+Invoke it with:
+
+> Read AGENTS.md, then follow prompts/review-hotel-profile.md to review the generated Hotel JSON-LD, provenance and out/report.md against the supplied source files. Return findings without changing files.
+
+If required outputs are absent, report the review as incomplete and list the missing inputs. Do not generate or repair artifacts during this review. A successful provenance review does not establish human approval to publish or successful runtime tests.
 
 ## Code Review Rules
 

@@ -4,7 +4,7 @@ This document records confirmed choices, proposals and open questions. It is not
 
 ## Evidence and document ownership
 
-- The original assignment is the initial portion of README.md, before the appended Submission section.
+- README.md contains the original assignment.
 - The supplied files in `data/` are the only evidence for hotel facts.
 - AGENTS.md contains durable working instructions.
 - This document records design discussion and decision status.
@@ -16,6 +16,7 @@ This document records confirmed choices, proposals and open questions. It is not
 | --- | --- |
 | Resource language | English for authored files; preserve original factual evidence in its original language. |
 | Stack | TypeScript with Node.js only. This narrows the original assignment's language options. |
+| Reusable agent asset | "Hotel provenance reviewer" prompt template in `prompts/review-hotel-profile.md`, selected by the user on 2026-10-07 for Part B.2. |
 | Planning | Establish a shared source of truth and discuss design before further implementation. |
 | First brainstorming topic | AI use and organization of the working process. |
 | Repository name | hotel_ai_profile_assignment. |
@@ -26,7 +27,20 @@ GitHub rejected repository creation for the connected account. No repository was
 
 ## Current implementation status
 
-Codex produced an initial Python draft before the user reviewed design decisions. The user then selected TypeScript/Node.js. The Python files and existing outputs remain a review reference; migration has not been performed. Their choices and successful Python tests do not establish an approved or verified TypeScript implementation.
+Earlier discussion referenced a Python draft, but no Python application, tests or generated outputs are present in this checkout. The selected stack is TypeScript/Node.js; application tooling and implementation have not been created. The reusable review template is present, but an output review cannot be completed until the pipeline artifacts exist. Historical Python checks do not establish an approved or verified TypeScript implementation.
+
+## Reusable agent asset (Part B.2)
+
+Asset: [Hotel provenance reviewer](../prompts/review-hotel-profile.md). Invocation instructions are in root `AGENTS.md`; the prompt itself contains only review instructions.
+
+[README.md, Part B.2](../README.md) requires a reusable agent asset and a 3-5-line explanation of the choice, but does not prescribe a file for that explanation. The rationale is kept here with the other design decisions.
+
+### Why I chose it
+
+- I chose a provenance review template because unsupported hotel facts are the project's main risk.
+- It checks each published value against its original source and checks that conflicts reach human review.
+- Its plain Markdown instructions can be reused across AI tools with a consistent, actionable findings format.
+- Keeping it in the repository allows its checks to evolve alongside the data pipeline and publication policy.
 
 ## Brainstorming: AI use and working process
 
@@ -38,7 +52,7 @@ Proposed responsibilities, not yet agreed in detail:
 
 - User: set priorities, decide business policies and review design/results.
 - Codex: explain options with evidence and tradeoffs, implement requested work, verify it and record actual events.
-- Reusable review asset: the existing prompt template can check source grounding and publication rules; no independent reviewer agent has been run.
+- Reusable review asset: the selected "Hotel provenance reviewer" template checks source grounding and publication rules, returns evidence-backed findings and makes no file changes. No independent reviewer agent or completed output review has been run.
 
 Proposed process:
 
@@ -69,7 +83,6 @@ Review cadence remains open: review each part, or agree on a plan and review the
 3. Which fields can be normalized automatically, and which require review? Decide using fixture examples.
 4. How should missing, invalid, conflicting and uncertain values be distinguished?
 5. How should duplicate identity and newer source dates be handled?
-6. Should the existing review asset change, or should we choose another skill or evaluation asset?
 
 ## How to update this record
 
