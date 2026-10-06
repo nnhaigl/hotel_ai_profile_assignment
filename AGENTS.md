@@ -4,24 +4,34 @@
 
 Build an offline hotel-data CLI for `hotel_ai_profile_assignment`: ingest the two supplied sources, normalize and merge records, and export Schema.org Hotel JSON-LD, per-field provenance and an Ops review report. Use TypeScript with Node.js only. No paid services or runtime network calls.
 
-Use the original assignment in README.md for requirements and `docs/DESIGN_NOTES.md` for confirmed decisions and unresolved proposals. This file contains working instructions; keep brainstorming and conversation history in the design notes.
+Use the locally supplied original assignment in README.md for requirements and `docs/DESIGN_NOTES.md` for confirmed decisions and unresolved proposals. The user excluded README.md and `data/` from Git; restore the supplied files locally before fixture-based runs and tests. This file contains working instructions; keep brainstorming and conversation history in the design notes.
 
 ## Repository map and current state
 
 - `data/hotels_raw.json`: official hotel records; preserve the supplied fixture.
 - `data/hotels_ota.json`: OTA records; preserve the supplied fixture.
-- `out/`: planned generated hotel profiles, provenance and `report.md`; not created yet.
+- `src/`: TypeScript ingestion, normalization, merge, export, reporting and safe output ownership.
+- `tests/profile.test.ts`: normalization, source tracing, merge, CLI and rerun/cleanup tests using Node's test runner.
+- `out/`: generated Hotel/provenance pairs, `report.md`, `review.json` and generator ownership manifest.
 - `prompts/review-hotel-profile.md`: reusable "Hotel provenance reviewer" prompt template for Part B.2.
 - `docs/DESIGN_NOTES.md`: design discussion and decision status.
-- `AI_LOG.md` and `UPDATE.md`: required AI log and executive handoff; not created yet.
+- `docs/PART_A.md`: verified run instructions, output contract, implementation defaults and remaining business decisions.
+- `AI_LOG.md`: Part C record of AI use, collaboration, mistakes and verified progress through the configurable-input correction; keep it within one page.
+- `UPDATE.md`: required Part D executive handoff; not created yet.
 
-No application implementation is present in this checkout. Use TypeScript/Node.js for implementation; do not add Python application code or tests.
+The offline TypeScript/Node.js CLI is implemented. Do not add Python application code or tests.
 
 ## Setup and verification commands
 
-No `package.json`, TypeScript configuration or verified Node.js run/build/test commands exist yet. Do not invent commands or claim successful application checks before tooling exists.
+Use Node.js 24.12.0 or newer and npm; verified locally with Node.js 24.12.0 and npm 11.6.2. The tested Node.js version is in `.nvmrc`.
 
-When implementing the Node.js tooling, document the required Node.js version, package manager and actual setup/run/type-check/test commands here. Verify those commands before marking them usable. The finished CLI must run with one command and work offline.
+- Run the complete pipeline: `npm start`. Runtime has no external dependencies, install step or network calls.
+- Select inputs: `npm start -- --official <file> --ota <file>`. Explicit paths are relative to the current working directory or absolute; omitted flags use the supplied fixtures. See `npm start -- --help`.
+- Run automated tests: `npm test`. Tests also run without external dependencies.
+- Install locked development tools: `npm ci --ignore-scripts --no-audit --no-fund`; add `--offline` when the packages are cached.
+- Check strict TypeScript types: `npm run typecheck` after installing development tools.
+
+Node.js executes erasable TypeScript directly; no build step is required. Runtime type stripping does not replace type checking. See `docs/PART_A.md` for outputs, ownership checks and limits.
 
 ## Engineering conventions
 
@@ -29,6 +39,7 @@ When implementing the Node.js tooling, document the required Node.js version, pa
 - Use strict TypeScript types. Validate input at the boundary; distinguish missing, invalid and conflicting values instead of silently coercing them.
 - Keep ingestion, normalization, merging and export responsibilities clear. Avoid unnecessary services, frameworks and dependencies for this small offline exercise.
 - Produce deterministic output: no wall-clock timestamps, random identifiers or network-dependent facts.
+- Keep input paths configurable. Use supplied fixtures only as defaults; record the actual selected paths and hashes in provenance. Input files must be outside `out/` so generation cannot overwrite its sources.
 - Preserve unrelated files and user changes. Clean up only generator-owned artifacts, using safe paths.
 
 ## Data integrity and publication
@@ -37,14 +48,14 @@ When implementing the Node.js tooling, document the required Node.js version, pa
 - Every published factual value must cite its original source record and field. Make transformations auditable. Schema constants are not hotel facts.
 - Do not invent unsupported values or discard meaningful qualifiers during normalization. Withhold uncertain values and explain the issue in the Ops report.
 - Do not silently resolve source conflicts: keep the official value or withhold it, and retain dissenting evidence for human review.
-- Mark business decisions explicitly. Consult design notes before encoding unresolved merge, duplicate, freshness or eligibility policies; do not treat draft policies as confirmed.
+- Mark business decisions explicitly. Consult `docs/DESIGN_NOTES.md` and the implementation defaults in `docs/PART_A.md` before changing merge, duplicate, freshness or eligibility policies; do not treat implemented defaults as human approval.
 - Keep internal contact notes and unsafe markup out of public hotel facts. Report exclusions and their reasons without executing embedded content.
 
 ## Working agreements
 
 - For brainstorming requests, discuss and record choices before implementing them. For explicit implementation requests, complete the requested work and resolve routine technical details without repeated confirmation.
 - Keep changes scoped and reviewable. Preserve commit history; do not reset or rewrite the user's work.
-- Do not push, upload or publish repository contents while the user's review hold remains in effect. An empty-repository request does not authorize an upload.
+- Commit, push or publish only when explicitly requested. The user authorized committing and pushing code/documentation on 2026-10-07, excluding root `data/` and `README.md`; keep those files local and ignored. Preserve the existing ignore rule for generated `out/`.
 - Update AGENTS.md when commands or durable conventions change; keep detailed rationale in linked documentation. Use nested instruction files only if a directory actually needs different rules.
 
 ## Verification and definition of done

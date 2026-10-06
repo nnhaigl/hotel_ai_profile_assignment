@@ -26,7 +26,7 @@ The open format specifies plain Markdown with no required fields. OpenAI recomme
 | Draft business policies appeared as rules despite lacking user confirmation. | Link unresolved policies and explicitly distinguish them from required data-integrity constraints. |
 | Stack selection remained mixed with earlier Python instructions. | State TypeScript/Node.js only and describe the implementation actually present in this checkout. |
 | The reusable review asset was referenced but absent. | Add the "Hotel provenance reviewer" template at `prompts/review-hotel-profile.md` for review instructions, keep invocation guidance in `AGENTS.md`, and keep the four-line Part B.2 rationale in `docs/DESIGN_NOTES.md`. |
-| Typical npm commands could be mistaken for implemented tooling. | State that Node.js tooling is absent; require actual commands to be documented and verified when implemented. |
+| Typical npm commands could be mistaken for implemented tooling. | Before Part A, record that tooling was absent. After implementation, document only verified commands and distinguish native execution from strict type checking. |
 | Completion criteria were spread across narrative sections. | Consolidate verification, reporting and data-focused review rules. |
 
 These section names and the split into two supporting documents are repository design choices, not requirements imposed by Codex. Neither choosing a package manager nor migrating application code is part of this documentation revision.
@@ -52,4 +52,4 @@ In an installed Codex CLI, start a fresh session from the repository root and as
 codex --ask-for-approval never "List the instruction files you loaded and summarize the repository rules. Do not modify files or run the application."
 ```
 
-Check that the root file is listed, TypeScript/Node.js, source-grounding rules and the repository upload hold are recognized, the "Hotel provenance reviewer" template is identified, and missing Node.js tooling is acknowledged. This interactive Codex loading check was not executed during this revision; local document consistency checks were performed instead.
+Check that the root file is listed, TypeScript/Node.js, source-grounding rules and the repository upload hold are recognized, the "Hotel provenance reviewer" template is identified, and the actual pipeline/test/type-check commands are understood. This interactive Codex loading check was not executed during this revision; local document consistency checks were performed instead.

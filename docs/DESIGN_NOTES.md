@@ -21,13 +21,13 @@ This document records confirmed choices, proposals and open questions. It is not
 | First brainstorming topic | AI use and organization of the working process. |
 | Repository name | hotel_ai_profile_assignment. |
 | Repository visibility | Public, as explicitly requested by the user. The assignment itself accepts a private repo or ZIP. |
-| Upload | Create only an empty repository; do not upload content before user review and a subsequent upload instruction. |
+| Upload | User authorized committing and pushing code/documentation on 2026-10-07, excluding root `data/` and `README.md`. Keep excluded files locally; generated `out/` remains ignored. This supersedes the earlier empty-repository-only request. |
 
-GitHub rejected repository creation for the connected account. No repository was created and no content was pushed. This is historical delivery status, not a coding convention.
+An earlier GitHub repository-creation attempt was rejected and pushed no content. The current checkout has an `origin` remote configured; the subsequent user instruction authorizes a normal push within the exclusions above. This is delivery history, not a coding convention.
 
 ## Current implementation status
 
-Earlier discussion referenced a Python draft, but no Python application, tests or generated outputs are present in this checkout. The selected stack is TypeScript/Node.js; application tooling and implementation have not been created. The reusable review template is present, but an output review cannot be completed until the pipeline artifacts exist. Historical Python checks do not establish an approved or verified TypeScript implementation.
+Part A is implemented in TypeScript/Node.js, as requested by the user on 2026-10-07. `npm start` generates nine source-backed Hotel/provenance pairs, the Ops report and a machine-readable review file from the supplied fixtures. H001/H004 form one reviewable duplicate group; H008 is held and H009 excluded. Input paths are configurable through `--official` and `--ota`, following the user's correction that the tool should not require fixed filenames; the supplied fixtures remain the defaults. Implementation defaults, output contracts and remaining business decisions are documented in [PART_A.md](PART_A.md). The reusable review template is present. [AI_LOG.md](../AI_LOG.md) records collaboration, actual mistakes and verified progress through this stage; `UPDATE.md` is not created yet. Historical Python checks do not establish any verification of this implementation.
 
 ## Reusable agent asset (Part B.2)
 
@@ -52,7 +52,7 @@ Proposed responsibilities, not yet agreed in detail:
 
 - User: set priorities, decide business policies and review design/results.
 - Codex: explain options with evidence and tradeoffs, implement requested work, verify it and record actual events.
-- Reusable review asset: the selected "Hotel provenance reviewer" template checks source grounding and publication rules, returns evidence-backed findings and makes no file changes. No independent reviewer agent or completed output review has been run.
+- Reusable review asset: the selected "Hotel provenance reviewer" template checks source grounding and publication rules, returns evidence-backed findings and makes no file changes. No independent reviewer agent has been run; output review and human approval must be reported separately.
 
 Proposed process:
 
@@ -65,6 +65,8 @@ Proposed process:
 Review cadence remains open: review each part, or agree on a plan and review the completed implementation. Codex proposed reviewing small parts; the user has not selected a cadence.
 
 ## Design proposals awaiting user review
+
+The table preserves the earlier proposals. The current implementation uses the explicit defaults in [PART_A.md](PART_A.md), including withholding invalid/uncertain official fields instead of automatically replacing them, and combining agreeing duplicate evidence instead of treating the first record as a factual winner. Business approval remains open; implementation is not evidence of confirmation.
 
 | Topic | Current draft choice | Question to consider |
 | --- | --- | --- |
