@@ -44,6 +44,21 @@ Part B.2 of the local `ASSIGNMENT.md` requires a reusable agent asset and a 3-5-
 - Its plain Markdown instructions can be reused across AI tools with a consistent, actionable findings format.
 - Keeping it in the repository allows its checks to evolve alongside the data pipeline and publication policy.
 
+## Personal workspace skills
+
+I have configured Solution Architect, Business Analytics, QC and Developer skills in my personal workspace. They give agents reusable guidance for different responsibilities, while I retain ownership of scope, business decisions and review of the results. I select the relevant skills for the task.
+
+| Skill | Responsibility | Review focus |
+| --- | --- | --- |
+| Solution Architect | Evaluate technical options, component boundaries, dependencies and change impact. | Identify affected components and contracts that must remain stable; explain tradeoffs before implementation. |
+| Business Analytics | Turn the request into business scope, acceptance criteria and unresolved decisions. | Establish expected behavior and evidence; identify questions that require a human decision. |
+| Developer | Implement the scoped change with appropriate source tracing and tests. | Keep the change focused, preserve existing contracts and add regression coverage for the behavior being changed. |
+| QC | Verify changes against scope and acceptance criteria; review affected components, test results and generated output. | Identify scope drift, regressions, unsupported facts and gaps in the available evidence. |
+
+For example, adding a supported input format can involve Business Analytics defining the expected cases, Solution Architect checking the impact on normalization, merging, export and provenance, Developer implementing the focused change and regression tests, and QC comparing the diff and results with the acceptance criteria. I review the findings, direct corrections and leave unresolved business choices explicit.
+
+The skill definitions live in my personal workspace and are not bundled with this repository. The CLI runs without them. Shared repository guidance is in [AGENTS.md](../AGENTS.md), and the handover asset for Part B.2 is the [Hotel provenance reviewer](../prompts/review-hotel-profile.md). This section describes configured roles and an example handoff; actual corrections and checks for the assignment are recorded in [AI_LOG.md](../AI_LOG.md).
+
 ## Brainstorming: AI use and working process
 
 User's idea: keep a shared record of brainstorming and review the submission before upload.

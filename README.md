@@ -170,7 +170,7 @@ See [Part A verification and limits](docs/PART_A.md#verification-and-limits) for
 
 - [AGENTS.md](AGENTS.md): operating rules for contributors and AI agents.
 - [Part A notes](docs/PART_A.md): output contract, policies, provenance, ownership and limits.
-- [Design notes](docs/DESIGN_NOTES.md): confirmed decisions, proposals and the reviewer rationale.
+- [Design notes](docs/DESIGN_NOTES.md): confirmed decisions, personal workspace skills, proposals and the reviewer rationale.
 - [AI work log](AI_LOG.md): tools, collaboration, agent mistakes and corrections.
 - [Executive update](UPDATE.md): delivery, risks and decisions for the Chief AI Officer.
 - `ASSIGNMENT.md`: previous assignment README; local and excluded from Git, so it is not included in a clone.
