@@ -128,7 +128,7 @@ On 2026-10-07, `npm ci --offline --ignore-scripts --no-audit --no-fund`, `npm ru
 
 The implementation agent applied `prompts/review-hotel-profile.md` to both source files, all nine Hotel/provenance pairs, all 133 factual output values and the Ops report. Source-grounding result: `PASS`, with the human decisions listed in the report still open. No unsupported factual values were found in that scope. This was not an independently delegated review or Ops publication approval; no external website or schema-validator execution was performed.
 
-Known scope limits: fixture-focused integer-price parsing, no general international telephone validator, no live website checks, no external JSON-LD processor/schema-validator execution, and no human-approved business policies. Future formats are withheld with explanations rather than guessed. Part C is recorded in [AI_LOG.md](../AI_LOG.md) through the configurable-input correction. Part D (`UPDATE.md`) remains outstanding.
+Known scope limits: fixture-focused integer-price parsing, no general international telephone validator, no live website checks, no external JSON-LD processor/schema-validator execution, and no human-approved business policies. Future formats are withheld with explanations rather than guessed. Part C is recorded in [AI_LOG.md](../AI_LOG.md). The Part D week-one executive handoff is in [UPDATE.md](../UPDATE.md).
 
 One actual implementation correction worth retaining for Part C: the first strict type-check caught `url` missing from the shared field union before any output was generated. The field was added, and coverage tests now check the generated factual paths and source evidence.
 

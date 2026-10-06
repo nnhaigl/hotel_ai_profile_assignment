@@ -16,8 +16,8 @@ Use the locally supplied original assignment in README.md for requirements and `
 - `prompts/review-hotel-profile.md`: reusable "Hotel provenance reviewer" prompt template for Part B.2.
 - `docs/DESIGN_NOTES.md`: design discussion and decision status.
 - `docs/PART_A.md`: verified run instructions, output contract, implementation defaults and remaining business decisions.
-- `AI_LOG.md`: Part C record of AI use, collaboration, mistakes and verified progress through the configurable-input correction; keep it within one page.
-- `UPDATE.md`: required Part D executive handoff; not created yet.
+- `AI_LOG.md`: Part C record of AI use, collaboration, mistakes and verified progress through the Part D draft; keep it within one page.
+- `UPDATE.md`: Part D week-one executive handoff covering delivery, risks, open work and decisions; keep it within 250 words.
 
 The offline TypeScript/Node.js CLI is implemented. Do not add Python application code or tests.
 

@@ -1,6 +1,6 @@
 # AI work log
 
-Snapshot: 2026-10-07, through Part A implementation and configurable-input correction.
+Snapshot: 2026-10-07, through Part A implementation, input corrections and the Part D draft.
 
 ## Tools and division of work
 
@@ -15,7 +15,8 @@ The user chose TypeScript/Node.js and the reviewer template, directed documentat
 1. Reviewed requirements and outputs; separated operating rules in `AGENTS.md` from discussion in `docs/DESIGN_NOTES.md` and corrected stale references.
 2. Created `prompts/review-hotel-profile.md`, linked its invocation and documented a four-line rationale separately.
 3. Implemented ingestion, normalization, merging, JSON-LD, per-field provenance, Ops reporting and safe reruns. Default fixtures produce nine profiles: H004 joins H001, H008 is held and H009 excluded. Checked all 133 factual output values against sources.
-4. Added configurable inputs after feedback; updated instructions and review guidance. Created this log; `UPDATE.md` remains outstanding.
+4. Added configurable inputs after feedback; updated instructions and review guidance. Created this log.
+5. Pushed code/documentation with `data/` and `README.md` excluded; drafted the week-one executive update in `UPDATE.md`.
 
 ## Agent mistakes and corrections
 
